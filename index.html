@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shelley的AI工具彙整</title>
 <style>
   :root{
@@ -168,17 +172,58 @@
     letter-spacing: 0.03em;
   }
 
-  @media (max-width: 620px){
-    .rings-grid{
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: clamp(28px, 6vh, 40px);
-      max-width: 360px;
+  /* 手機與平板：內容放大到畫面寬度約 4/5 */
+  @media (max-width: 1024px), (hover: none) and (pointer: coarse){
+    body{ padding-inline: 0; }
+    .page{
+      max-width: none;
+      width: 80vw;
+      padding-block: 6vh 6vh;
+      gap: 6vh;
     }
+    header{ gap: 2vw; }
+    h1{ font-size: min(8.2vw, 11vh); }
+    .kicker{ font-size: min(3.4vw, 4.5vh); }
+    .rings-grid{
+      --gap: 6vw;
+      --circle: calc((80vw - var(--gap)) / 2);
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--gap);
+      row-gap: 7vw;
+      max-width: none;
+    }
+    .ring-item{ gap: 3vw; }
     .ring-item:nth-child(1){ grid-column: 1 / 2; grid-row: 1; }
     .ring-item:nth-child(2){ grid-column: 2 / 3; grid-row: 1; }
     .ring-item:nth-child(3){ grid-column: 1 / 2; grid-row: 2; }
     .ring-item:nth-child(4){ grid-column: 2 / 3; grid-row: 2; }
     .ring-item:nth-child(5){ grid-column: 1 / 3; grid-row: 3; justify-self:center; }
+    .circle{ border-width: max(3px, 0.9vw); }
+    .circle img{ width: 72%; height: 72%; }
+    .label{ gap: 1vw; }
+    .label .title{ font-size: 6vw; }
+    .label .url{ font-size: 3.4vw; }
+    footer{ max-width: none; padding-top: 4vw; }
+    footer p{ font-size: 3.2vw; }
+  }
+
+  /* 平板／手機橫放：三欄排列，同樣佔畫面寬度約 4/5 */
+  @media (orientation: landscape) and (max-width: 1024px), (orientation: landscape) and (hover: none) and (pointer: coarse){
+    .rings-grid{
+      --gap: 4vw;
+      --circle: calc((80vw - 2 * var(--gap)) / 3);
+      grid-template-columns: repeat(6, 1fr);
+      row-gap: 5vw;
+    }
+    .ring-item:nth-child(1){ grid-column: 1 / 3; grid-row: 1; }
+    .ring-item:nth-child(2){ grid-column: 3 / 5; grid-row: 1; }
+    .ring-item:nth-child(3){ grid-column: 5 / 7; grid-row: 1; }
+    .ring-item:nth-child(4){ grid-column: 2 / 4; grid-row: 2; }
+    .ring-item:nth-child(5){ grid-column: 4 / 6; grid-row: 2; justify-self:stretch; }
+    .ring-item{ gap: 2vw; }
+    .label .title{ font-size: 3.6vw; }
+    .label .url{ font-size: 2vw; }
+    footer p{ font-size: 1.8vw; }
   }
 </style>
 
